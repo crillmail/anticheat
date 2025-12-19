@@ -1,0 +1,34 @@
+﻿  Building 'driver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: The intermediate directory (C:\Users\admin\Desktop\meowkit\\build\objects\) contains files shared from another project (rootkit.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  drv_entry.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vcruntime.h(61,26): warning C4083: expected ')'; found identifier '_VCRUNTIME_DISABLED_WARNINGS'
+  (compiling source file 'src/drv_entry.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vcruntime.h(111,9): warning C4005: '_CRT_STRINGIZE': macro redefinition
+  (compiling source file 'src/drv_entry.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km\crt\crtdefs.h(85,9):
+      see previous definition of '_CRT_STRINGIZE'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vcruntime.h(114,9): warning C4005: '_CRT_WIDE': macro redefinition
+  (compiling source file 'src/drv_entry.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km\crt\crtdefs.h(88,9):
+      see previous definition of '_CRT_WIDE'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vcruntime.h(155,9): warning C4005: '__CRTDECL': macro redefinition
+  (compiling source file 'src/drv_entry.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km\crt\crtdefs.h(640,9):
+      see previous definition of '__CRTDECL'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdint.h(16,26): warning C4083: expected ')'; found identifier '_VCRUNTIME_DISABLED_WARNINGS'
+  (compiling source file 'src/drv_entry.cpp')
+  
+C:\Users\admin\Desktop\meowkit\driver\src\drv_entry.cpp(21,70): warning C4100: 'registry_path': unreferenced parameter
+  driver.vcxproj -> C:\Users\admin\Desktop\meowkit\build\driver.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\admin\Desktop\meowkit\build\driver.sys
+  
+  Driver is 'Universal'.
+  Inf2Cat task was skipped as there were no inf files to process
+  
+  DrvCat task was skipped as there was no catalog file to process
+  

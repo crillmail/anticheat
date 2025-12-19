@@ -1,0 +1,7 @@
+C:\Users\admin\Desktop\meowkit\driver\src\callbacks\process_handle_operations.cpp;C:\Users\admin\Desktop\meowkit\build\objects\process_handle_operations.obj
+C:\Users\admin\Desktop\meowkit\driver\src\callbacks\image_load.cpp;C:\Users\admin\Desktop\meowkit\build\objects\image_load.obj
+C:\Users\admin\Desktop\meowkit\driver\src\callbacks\create_thread.cpp;C:\Users\admin\Desktop\meowkit\build\objects\create_thread.obj
+C:\Users\admin\Desktop\meowkit\driver\src\callbacks\callbacks.cpp;C:\Users\admin\Desktop\meowkit\build\objects\callbacks.obj
+C:\Users\admin\Desktop\meowkit\driver\src\callbacks\create_process.cpp;C:\Users\admin\Desktop\meowkit\build\objects\create_process.obj
+C:\Users\admin\Desktop\meowkit\driver\src\device.cpp;C:\Users\admin\Desktop\meowkit\build\objects\device.obj
+C:\Users\admin\Desktop\meowkit\driver\src\drv_entry.cpp;C:\Users\admin\Desktop\meowkit\build\objects\drv_entry.obj
