@@ -11,7 +11,7 @@ namespace anticheat {
 	class callback {
 	public:
 		static NTSTATUS register_callbacks();
-		static void remove_callbacks();
+		static void remove_callbacks(); // no return value, only unregisters pre registered callbacks.
 	private:
 		static inline void* process_callback_registration_handle = nullptr;
 	};

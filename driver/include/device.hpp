@@ -12,6 +12,6 @@ namespace anticheat {
 
        static NTSTATUS destroy_device(const PDRIVER_OBJECT driver_object, const wchar_t* symbolic_link);
     };
-} // namespace anticheat
+}
 
 #endif // !device_hpp
