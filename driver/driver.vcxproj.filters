@@ -22,7 +22,7 @@
     <ClCompile Include="src\drv_entry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\device.cpp">
+    <ClCompile Include="src\util\device.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\callbacks\create_process.cpp">
@@ -54,10 +54,7 @@
     <ClInclude Include="include\types\haltypes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\device.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\logger.hpp">
+    <ClInclude Include="include\util\device.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\callbacks\callbacks.hpp">

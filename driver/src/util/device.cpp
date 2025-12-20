@@ -1,4 +1,4 @@
-#include "device.hpp"
+#include "util/device.hpp"
 
 NTSTATUS anticheat::device::create_device(const PDRIVER_OBJECT driver_object, const wchar_t* device_name,
     const wchar_t* symbolic_link,

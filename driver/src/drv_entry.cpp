@@ -1,5 +1,5 @@
 #include "framework.hpp"
-#include "device.hpp"
+#include "util/device.hpp"
 #include "communication/io.hpp"
 #include "callbacks/callbacks.hpp"
 

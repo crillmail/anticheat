@@ -68,7 +68,7 @@
     <ClCompile Include="src\callbacks\create_thread.cpp" />
     <ClCompile Include="src\callbacks\callbacks.cpp" />
     <ClCompile Include="src\callbacks\create_process.cpp" />
-    <ClCompile Include="src\device.cpp" />
+    <ClCompile Include="src\util\device.cpp" />
     <ClCompile Include="src\drv_entry.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +78,8 @@
     <ClInclude Include="include\callbacks\image_load.hpp" />
     <ClInclude Include="include\callbacks\process_handle_operations.hpp" />
     <ClInclude Include="include\communication\io.hpp" />
-    <ClInclude Include="include\device.hpp" />
+    <ClInclude Include="include\util\device.hpp" />
     <ClInclude Include="include\framework.hpp" />
-    <ClInclude Include="include\logger.hpp" />
     <ClInclude Include="include\types\arc.hpp" />
     <ClInclude Include="include\types\haltypes.hpp" />
     <ClInclude Include="include\types\ia32.hpp" />
