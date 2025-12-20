@@ -62,6 +62,7 @@
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\communication\io.cpp" />
     <ClCompile Include="src\callbacks\process_handle_operations.cpp" />
     <ClCompile Include="src\callbacks\image_load.cpp" />
     <ClCompile Include="src\callbacks\create_thread.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="include\callbacks\create_thread.hpp" />
     <ClInclude Include="include\callbacks\image_load.hpp" />
     <ClInclude Include="include\callbacks\process_handle_operations.hpp" />
+    <ClInclude Include="include\communication\io.hpp" />
     <ClInclude Include="include\device.hpp" />
     <ClInclude Include="include\framework.hpp" />
     <ClInclude Include="include\logger.hpp" />

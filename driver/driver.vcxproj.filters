@@ -40,6 +40,9 @@
     <ClCompile Include="src\callbacks\process_handle_operations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\communication\io.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\types\wdbgexts.hpp">
@@ -79,6 +82,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\callbacks\process_handle_operations.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\communication\io.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
