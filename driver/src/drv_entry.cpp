@@ -2,14 +2,15 @@
 #include "device.hpp"
 #include "callbacks/callbacks.hpp"
 
-const wchar_t* device_name = L"\\Device\\anticheat";
-const wchar_t* symbolic_name = L"\\??\\anticheat";
+constexpr wchar_t* device_name = L"\\Device\\anticheat";
+constexpr wchar_t* symbolic_name = L"\\??\\anticheat";
 
 void FxDriverUnload(PDRIVER_OBJECT driver_object) {
-	DbgPrint("(+) deleted device -> 0x%lx", 
-		anticheat::device::destroy_device(driver_object, symbolic_name));
-
 	anticheat::callback::remove_callbacks();
+
+	auto status = anticheat::device::destroy_device(driver_object, symbolic_name);
+
+	DbgPrint("(+) deleted device -> 0x%lx", status);
 }
 
 NTSTATUS FxDriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path) {
