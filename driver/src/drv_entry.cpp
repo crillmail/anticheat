@@ -13,21 +13,27 @@ void FxDriverUnload(PDRIVER_OBJECT driver_object) {
 }
 
 NTSTATUS FxDriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path) {
-	auto status = anticheat::device::create_device(driver_object,
+	auto status = anticheat::callback::register_callbacks();
+	if (!NT_SUCCESS(status)) {
+		DbgPrint("(-) failed to register callbacks -> 0x%lx", status);
+		anticheat::callback::remove_callbacks();
+		return status;
+	}
+
+	status = anticheat::device::create_device(driver_object,
 		device_name,
 		symbolic_name,
 		FILE_DEVICE_SECURE_OPEN);
 
 	if (!NT_SUCCESS(status)) {
 		DbgPrint("(-) failed to setup device -> 0x%lx", status);
+		anticheat::callback::remove_callbacks();
 		return status;
 	}
 
 	driver_object->DriverUnload = FxDriverUnload;
 
 	DbgPrint("(+) setup device -> 0x%lx", status);
-
-	anticheat::callback::register_callbacks();
 
 	return STATUS_SUCCESS;
 }
