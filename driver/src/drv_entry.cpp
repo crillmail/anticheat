@@ -6,16 +6,10 @@ const wchar_t* device_name = L"\\Device\\anticheat";
 const wchar_t* symbolic_name = L"\\??\\anticheat";
 
 void FxDriverUnload(PDRIVER_OBJECT driver_object) {
-	if (driver_object->DeviceObject) {
-		UNICODE_STRING symbolic_name_string = {};
-		RtlInitUnicodeString(&symbolic_name_string, symbolic_name);
-		auto status = IoDeleteSymbolicLink(&symbolic_name_string);
-		IoDeleteDevice(driver_object->DeviceObject);
+	DbgPrint("(+) deleted device -> 0x%lx", 
+		anticheat::device::destroy_device(driver_object, symbolic_name));
 
-		DbgPrint("(+) deleted device -> 0x%lx", status);
-	}
-
-	rootkit::callback::remove_callbacks();
+	anticheat::callback::remove_callbacks();
 }
 
 NTSTATUS FxDriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path) {
@@ -32,7 +26,8 @@ NTSTATUS FxDriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_pa
 	driver_object->DriverUnload = FxDriverUnload;
 
 	DbgPrint("(+) setup device -> 0x%lx", status);
-	rootkit::callback::register_callbacks();
+
+	anticheat::callback::register_callbacks();
 
 	return STATUS_SUCCESS;
 }

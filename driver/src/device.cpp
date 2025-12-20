@@ -1,7 +1,6 @@
 #include "device.hpp"
 
-NTSTATUS anticheat::device::create_device(const PDRIVER_OBJECT driver_object,
-    const wchar_t* device_name,
+NTSTATUS anticheat::device::create_device(const PDRIVER_OBJECT driver_object, const wchar_t* device_name,
     const wchar_t* symbolic_link,
     const uint32_t device_flags) {
     if (!driver_object || !device_name || !symbolic_link)
@@ -29,6 +28,18 @@ NTSTATUS anticheat::device::create_device(const PDRIVER_OBJECT driver_object,
         IoDeleteDevice(device_object);
         return status;
     }
+
+    return status;
+}
+
+NTSTATUS anticheat::device::destroy_device(const PDRIVER_OBJECT driver_object, const wchar_t* symbolic_link) {
+    if (!driver_object || !driver_object->DeviceObject)
+        return STATUS_INVALID_PARAMETER;
+
+    UNICODE_STRING symbolic_name_string = {};
+    RtlInitUnicodeString(&symbolic_name_string, symbolic_link);
+    auto status = IoDeleteSymbolicLink(&symbolic_name_string);
+    IoDeleteDevice(driver_object->DeviceObject);
 
     return status;
 }

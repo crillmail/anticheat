@@ -7,7 +7,7 @@
 #include "image_load.hpp"
 #include "process_handle_operations.hpp"
 
-namespace rootkit {
+namespace anticheat {
 	class callback {
 	public:
 		static NTSTATUS register_callbacks();

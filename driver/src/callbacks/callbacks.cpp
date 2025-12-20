@@ -1,6 +1,6 @@
 #include "callbacks/callbacks.hpp"
 
-NTSTATUS rootkit::callback::register_callbacks() {
+NTSTATUS anticheat::callback::register_callbacks() {
     // linker requires /INTEGRITYCHECK or this fails
     auto status = PsSetCreateProcessNotifyRoutineEx(callbacks::create_process::routine, false);
     if (!NT_SUCCESS(status))
@@ -42,7 +42,7 @@ NTSTATUS rootkit::callback::register_callbacks() {
     return status;
 }
 
-void rootkit::callback::remove_callbacks() {
+void anticheat::callback::remove_callbacks() {
     PsSetCreateProcessNotifyRoutineEx(callbacks::create_process::routine, true);
     PsRemoveLoadImageNotifyRoutine((PLOAD_IMAGE_NOTIFY_ROUTINE)callbacks::image_load::routine);
     PsRemoveCreateThreadNotifyRoutine((PCREATE_THREAD_NOTIFY_ROUTINE)callbacks::create_thread::routine);
