@@ -34,10 +34,9 @@ NTSTATUS FxDriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_pa
 	}
 
 	driver_object->DriverUnload = FxDriverUnload;
-	
-	for (auto idx = 0; idx < IRP_MJ_MAXIMUM_FUNCTION; idx++) {
-		driver_object->MajorFunction[idx] = &anticheat::io::irp_handler;
-	}
+	driver_object->MajorFunction[IRP_MJ_CLOSE] = &anticheat::io::irp_handler;
+	driver_object->MajorFunction[IRP_MJ_CREATE] = &anticheat::io::irp_handler;
+	driver_object->MajorFunction[IRP_MJ_DEVICE_CONTROL] = &anticheat::io::irp_handler;
 
 	DbgPrint("(+) setup device -> 0x%lx", status);
 

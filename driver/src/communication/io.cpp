@@ -1,39 +1,43 @@
 #include "communication/io.hpp"
 
 NTSTATUS anticheat::io::irp_handler(PDEVICE_OBJECT device_object, PIRP irp) {
-    if (!device_object || !irp)
-        return STATUS_INVALID_PARAMETER;
-
     auto* isl = irp->Tail.Overlay.CurrentStackLocation;
-    if (!isl)
-        return STATUS_INVALID_PARAMETER_1;
+    if (!isl) {
+        irp->IoStatus.Status = STATUS_INVALID_DEVICE_STATE;
+        irp->IoStatus.Information = 0;
+        IofCompleteRequest(irp, IO_NO_INCREMENT);
+        return STATUS_INVALID_DEVICE_STATE;
+    }
 
     auto status = STATUS_SUCCESS;
 
+    irp_io_context irp_context = { device_object, irp, isl };
+
     switch (isl->MajorFunction) {
     case IRP_MJ_CLOSE:
+        break; // no idea what to do with this one. handle to device is getting closed
     case IRP_MJ_CREATE:
-        status = complete_request(irp, STATUS_SUCCESS, 0);
+        status = create_handler(&irp_context);
         break;
     case IRP_MJ_DEVICE_CONTROL:
-        status = complete_request(irp, STATUS_SUCCESS, 0);
+        status = device_control_handler(&irp_context);
         break;
     default:
-        status = complete_request(irp, STATUS_UNSUCCESSFUL, 0);
+        status = STATUS_NOT_SUPPORTED;
         break;
     }
 
+    // don't wanna set information here let the handler set that...
+    irp->IoStatus.Status = status;
+    IofCompleteRequest(irp, IO_NO_INCREMENT);
     return status;
 }
 
-NTSTATUS anticheat::io::complete_request(PIRP irp, NTSTATUS status, uint32_t information) {
-    if (!irp)
-        return STATUS_ACCESS_VIOLATION;
+NTSTATUS anticheat::io::create_handler(pirp_io_context context) {
+    // add checking here in the future to restrict access to device
+    return STATUS_SUCCESS;
+}
 
-    auto* status_block = &irp->IoStatus;
-    status_block->Information = information;
-    status_block->Status = status;
-    IofCompleteRequest(irp, IO_NO_INCREMENT);
-
-    return status;
+NTSTATUS anticheat::io::device_control_handler(pirp_io_context context) {
+    return STATUS_SUCCESS;
 }
