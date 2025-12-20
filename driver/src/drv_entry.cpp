@@ -19,7 +19,7 @@ void FxDriverUnload(PDRIVER_OBJECT driver_object) {
 }
 
 NTSTATUS FxDriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path) {
-	auto status = rootkit::device::create_device(driver_object,
+	auto status = anticheat::device::create_device(driver_object,
 		device_name,
 		symbolic_name,
 		FILE_DEVICE_SECURE_OPEN);

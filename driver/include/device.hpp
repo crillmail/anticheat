@@ -3,7 +3,7 @@
 
 #include "framework.hpp"
 
-namespace rootkit {
+namespace anticheat {
     class device {
     public:
        static NTSTATUS create_device(const PDRIVER_OBJECT driver_object,
@@ -11,6 +11,6 @@ namespace rootkit {
             const wchar_t* symbolic_link,
             const uint32_t device_flags);
     };
-} // namespace rootkit
+} // namespace anticheat
 
 #endif // !device_hpp

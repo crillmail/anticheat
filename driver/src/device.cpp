@@ -1,6 +1,6 @@
 #include "device.hpp"
 
-NTSTATUS rootkit::device::create_device(const PDRIVER_OBJECT driver_object,
+NTSTATUS anticheat::device::create_device(const PDRIVER_OBJECT driver_object,
     const wchar_t* device_name,
     const wchar_t* symbolic_link,
     const uint32_t device_flags) {
