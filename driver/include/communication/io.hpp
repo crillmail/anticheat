@@ -2,6 +2,8 @@
 #define io_hpp
 
 #include "framework.hpp"
+#include "types.hpp"
+#include "operations.hpp"
 
 namespace anticheat {
 	class io {
@@ -16,7 +18,7 @@ namespace anticheat {
 			irp_io_context(PDEVICE_OBJECT device_object, PIRP irp, PIO_STACK_LOCATION isl)
 				: m_device_object(device_object), m_irp(irp), 
 				m_isl(isl), 
-				m_status_block(&irp->IoStatus) {}
+				m_status_block(&irp->IoStatus) { }
 		};
 
 		using pirp_io_context = irp_io_context*;

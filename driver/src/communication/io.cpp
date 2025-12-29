@@ -39,5 +39,19 @@ NTSTATUS anticheat::io::create_handler(pirp_io_context context) {
 }
 
 NTSTATUS anticheat::io::device_control_handler(pirp_io_context context) {
+    auto* request = (pac_packet)context->m_irp->AssociatedIrp.SystemBuffer;
+
+    switch (request->request_code) {
+    case ac_packet_request::register_process:
+        context->m_status_block->Status = operations::handle_register_process(request);
+        break;
+    case ac_packet_request::unregister_process:
+        context->m_status_block->Status = operations::handle_unregister_process(request);
+        break;
+    default:
+        context->m_status_block->Status = STATUS_INVALID_PARAMETER;
+        break;
+    }
+
     return STATUS_SUCCESS;
 }

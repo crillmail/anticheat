@@ -14,15 +14,13 @@ OB_PREOP_CALLBACK_STATUS callbacks::process_handle_operations::process_handle_ro
 	const auto current_process_id = (uint32_t)PsGetCurrentProcessId();
 	const auto target_process_id = (uint32_t)PsGetProcessId(target_process);
 
-	if (strcmp(PsGetProcessImageFileName(target_process), "notepad.exe"))
-		return OB_PREOP_SUCCESS;
 
 	switch (operation_information->Operation) {
 	case OB_OPERATION_HANDLE_CREATE:
-		operation_information->Parameters->CreateHandleInformation.DesiredAccess = 0;
+		operation_information->Parameters->CreateHandleInformation.DesiredAccess &= ~(PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION);
 		break;
 	case OB_OPERATION_HANDLE_DUPLICATE:
-		operation_information->Parameters->DuplicateHandleInformation.DesiredAccess = 0;
+		operation_information->Parameters->DuplicateHandleInformation.DesiredAccess &= ~(PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION);
 		break;
 	}
 
@@ -42,9 +40,6 @@ OB_PREOP_CALLBACK_STATUS callbacks::process_handle_operations::process_thread_ha
 
 	const auto current_process_id = (uint32_t)PsGetCurrentProcessId();
 	const auto target_thread_id = (uint32_t)PsGetThreadId(target_thread);
-
-	if (strcmp(PsGetProcessImageFileName(PsGetThreadProcess(target_thread)), "notepad.exe"))
-		return OB_PREOP_SUCCESS;
 
 	switch (operation_information->Operation) {
 	case OB_OPERATION_HANDLE_CREATE:

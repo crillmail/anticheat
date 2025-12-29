@@ -21,9 +21,18 @@
     <ClInclude Include="include\util\console.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\communication\types.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\communication\io.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\communication\io.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\communication\io.hpp" />
+    <ClInclude Include="include\communication\types.hpp" />
     <ClInclude Include="include\framework.hpp" />
     <ClInclude Include="include\util\console.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\communication\io.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
